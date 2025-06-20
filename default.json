@@ -19,7 +19,7 @@
   "rebaseWhen": "conflicted",
   "packageRules": [
     {
-      "groupName": "all non-major updates",
+      "groupName": "all non-major dependencies",
       "matchUpdateTypes": ["minor", "patch", "pin", "digest"],
       "automerge": true
     }
