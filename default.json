@@ -3,14 +3,15 @@
   "autoApprove": true,
   "automergeStrategy": "squash",
   "extends": [
-    "config:recommended",
-    "schedule:automergeWeekly",
     ":automergeMinor",
     ":automergePr",
     ":automergeRequireAllStatusChecks",
     ":configMigration",
     ":docker",
-    ":enableVulnerabilityAlerts"
+    ":enableVulnerabilityAlerts",
+    ":semanticCommitTypeAll(chore)",
+    "config:recommended",
+    "schedule:automergeWeekly"
   ],
   "lockFileMaintenance": {
     "enabled": true
