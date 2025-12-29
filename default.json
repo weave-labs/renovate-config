@@ -23,6 +23,7 @@
   },
   "packageRules": [
     {
+      "automerge": true,
       "groupName": "all non-major dependencies",
       "matchUpdateTypes": [
         "minor",
@@ -30,7 +31,6 @@
         "pin",
         "digest"
       ],
-      "automerge": true
     }
   ],
   "platformAutomerge": true,
