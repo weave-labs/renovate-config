@@ -2,6 +2,9 @@
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "autoApprove": true,
   "automergeStrategy": "squash",
+  "env": {
+    "GOPRIVATE": "github.com/weave-labs/*"
+  },
   "extends": [
     ":automergeMinor",
     ":automergePr",
