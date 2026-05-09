@@ -26,6 +26,16 @@
   },
   "packageRules": [
     {
+      "description": "Docker Hub mirror images keep their Artifact Registry pull path while Renovate looks up tags from Docker Hub.",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "us-central1-docker.pkg.dev/weavelabs-common/dockerhub/**"
+      ],
+      "overridePackageName": "{{replace 'us-central1-docker\\.pkg\\.dev/weavelabs-common/dockerhub/' '' packageName}}"
+    },
+    {
       "automerge": true,
       "groupName": "all non-major dependencies",
       "matchUpdateTypes": [
