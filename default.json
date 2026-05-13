@@ -20,6 +20,41 @@
   "lockFileMaintenance": {
     "enabled": true
   },
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "Update comment-annotated YAML scalar version pins.",
+      "fileMatch": [
+        "/\\.ya?ml$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+packageName=(?<packageName>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s+versioning=(?<versioning>\\S+)\\s*\\n\\s*[A-Za-z0-9_.-]+:\\s*[\"']?(?<currentValue>[^\"'\\s]+)[\"']?"
+      ],
+      "versioningTemplate": "{{{versioning}}}"
+    },
+    {
+      "customType": "regex",
+      "description": "Update comment-annotated Docker base image ARG tags.",
+      "fileMatch": [
+        "/(^|/)Dockerfile$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>docker)\\s+depName=(?<depName>\\S+)(?:\\s+packageName=(?<packageName>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s+versioning=(?<versioning>\\S+)\\s*\\n\\s*ARG\\s+BASE=\\S+:(?<currentValue>\\S+)"
+      ],
+      "versioningTemplate": "{{{versioning}}}"
+    },
+    {
+      "customType": "regex",
+      "description": "Update comment-annotated Docker ARG version pins.",
+      "fileMatch": [
+        "/(^|/)Dockerfile$/"
+      ],
+      "matchStrings": [
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+packageName=(?<packageName>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s+versioning=(?<versioning>\\S+)\\s*\\n\\s*ARG\\s+(?!BASE\\b)[A-Z0-9_]+=(?<currentValue>\\S+)"
+      ],
+      "versioningTemplate": "{{{versioning}}}"
+    }
+  ],
   "onboardingConfig": {
     "extends": [
       "github>weave-labs/renovate-config"
@@ -53,6 +88,12 @@
       "matchManagers": ["github-actions"],
       "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"],
       "minimumReleaseAge": "3 days"
+    },
+    {
+      "description": "Keep Weave Labs shared CI refs live so downstream repos inherit central workflow policy.",
+      "matchManagers": ["github-actions"],
+      "matchPackageNames": ["weave-labs/ci"],
+      "pinDigests": false
     },
     {
       "description": "Delay npm and PyPI updates so brand-new compromised releases have time to be detected and pulled.",
