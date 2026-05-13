@@ -20,6 +20,13 @@
   "lockFileMaintenance": {
     "enabled": true
   },
+  "vulnerabilityAlerts": {
+    "description": "Batch vulnerability fixes into the normal non-major dependency PR instead of opening one security PR per package.",
+    "groupName": "all non-major dependencies",
+    "groupSlug": "all-non-major-dependencies",
+    "commitMessageSuffix": "",
+    "vulnerabilityFixStrategy": "highest"
+  },
   "customManagers": [
     {
       "customType": "regex",
