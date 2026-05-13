@@ -14,6 +14,7 @@
     ":enableVulnerabilityAlerts",
     ":semanticCommitTypeAll(chore)",
     "config:recommended",
+    "helpers:pinGitHubActionDigests",
     "schedule:automergeWeekly"
   ],
   "lockFileMaintenance": {
@@ -43,14 +44,43 @@
         "patch",
         "pin",
         "digest"
-      ],
+      ]
     },
     {
+      "autoApprove": false,
+      "automerge": false,
       "groupName": "github actions",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"]
+      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "description": "Delay npm and PyPI updates so brand-new compromised releases have time to be detected and pulled.",
+      "matchDatasources": ["npm", "pypi"],
+      "minimumReleaseAge": "3 days"
+    },
+    {
+      "description": "Do not automerge package registry updates that run publish/build tooling.",
+      "autoApprove": false,
+      "automerge": false,
+      "matchDatasources": ["npm", "pypi"],
+      "matchPackageNames": [
+        "@semantic-release/**",
+        "@types/node",
+        "build",
+        "cycjimmy/semantic-release-action",
+        "npm",
+        "pnpm",
+        "pypa/gh-action-pypi-publish",
+        "ruff",
+        "semantic-release",
+        "setuptools",
+        "twine",
+        "uv"
+      ]
     }
   ],
+  "osvVulnerabilityAlerts": true,
   "platformAutomerge": true,
   "rebaseWhen": "conflicted"
 }
