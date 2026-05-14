@@ -118,6 +118,11 @@
         "twine",
         "uv"
       ]
+    },
+    {
+      "description": "Do not delay dependency updates in Weave Labs repositories.",
+      "matchRepositories": ["weave-labs/**"],
+      "minimumReleaseAge": null
     }
   ],
   "osvVulnerabilityAlerts": true,
