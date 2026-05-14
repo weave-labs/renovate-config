@@ -85,19 +85,13 @@
       "automerge": false,
       "groupName": "github actions",
       "matchManagers": ["github-actions"],
-      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"],
-      "minimumReleaseAge": "3 days"
+      "matchUpdateTypes": ["major", "minor", "patch", "pin", "digest"]
     },
     {
       "description": "Keep Weave Labs shared CI refs live so downstream repos inherit central workflow policy.",
       "matchManagers": ["github-actions"],
       "matchPackageNames": ["weave-labs/ci"],
       "pinDigests": false
-    },
-    {
-      "description": "Delay npm and PyPI updates so brand-new compromised releases have time to be detected and pulled.",
-      "matchDatasources": ["npm", "pypi"],
-      "minimumReleaseAge": "3 days"
     },
     {
       "description": "Do not automerge package registry updates that run publish/build tooling.",
@@ -118,11 +112,6 @@
         "twine",
         "uv"
       ]
-    },
-    {
-      "description": "Do not delay dependency updates in Weave Labs repositories.",
-      "matchRepositories": ["weave-labs/**"],
-      "minimumReleaseAge": null
     }
   ],
   "osvVulnerabilityAlerts": true,
