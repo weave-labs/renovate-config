@@ -23,6 +23,7 @@
   "lockFileMaintenance": {
     "enabled": true
   },
+  "minimumReleaseAge": "0 days",
   "vulnerabilityAlerts": {
     "description": "Batch vulnerability fixes into the normal non-major dependency PR instead of opening one security PR per package.",
     "groupName": "all non-major dependencies",
