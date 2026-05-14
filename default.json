@@ -122,7 +122,7 @@
     {
       "description": "Do not delay dependency updates in Weave Labs repositories.",
       "matchRepositories": ["weave-labs/**"],
-      "minimumReleaseAge": null
+      "minimumReleaseAge": "0 days"
     }
   ],
   "osvVulnerabilityAlerts": true,
