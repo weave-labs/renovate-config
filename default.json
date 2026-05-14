@@ -34,7 +34,7 @@
     {
       "customType": "regex",
       "description": "Update comment-annotated YAML scalar version pins.",
-      "fileMatch": [
+      "managerFilePatterns": [
         "/\\.ya?ml$/"
       ],
       "matchStrings": [
@@ -44,23 +44,12 @@
     },
     {
       "customType": "regex",
-      "description": "Update comment-annotated Docker base image ARG tags.",
-      "fileMatch": [
+      "description": "Update comment-annotated Docker ARG version pins, including image tag ARGs.",
+      "managerFilePatterns": [
         "/(^|/)Dockerfile$/"
       ],
       "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>docker)\\s+depName=(?<depName>\\S+)(?:\\s+packageName=(?<packageName>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s+versioning=(?<versioning>\\S+)\\s*\\n\\s*ARG\\s+BASE=\\S+:(?<currentValue>\\S+)"
-      ],
-      "versioningTemplate": "{{{versioning}}}"
-    },
-    {
-      "customType": "regex",
-      "description": "Update comment-annotated Docker ARG version pins.",
-      "fileMatch": [
-        "/(^|/)Dockerfile$/"
-      ],
-      "matchStrings": [
-        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+packageName=(?<packageName>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s+versioning=(?<versioning>\\S+)\\s*\\n\\s*ARG\\s+(?!BASE\\b)[A-Z0-9_]+=(?<currentValue>\\S+)"
+        "#\\s*renovate:\\s*datasource=(?<datasource>\\S+)\\s+depName=(?<depName>\\S+)(?:\\s+packageName=(?<packageName>\\S+))?(?:\\s+registryUrl=(?<registryUrl>\\S+))?\\s+versioning=(?<versioning>\\S+)\\s*\\n\\s*ARG\\s+[A-Z0-9_]+=(?:\\S+:)?(?<currentValue>\\S+)"
       ],
       "versioningTemplate": "{{{versioning}}}"
     }
