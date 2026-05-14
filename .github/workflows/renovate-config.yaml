@@ -1,0 +1,16 @@
+name: Renovate Config
+
+on:
+  pull_request:
+    paths:
+      - default.json
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    uses: weave-labs/ci/.github/workflows/renovate-config-validator.yaml@main
+    with:
+      config-file: default.json
+      global-config: true
