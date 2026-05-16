@@ -120,8 +120,13 @@
       ]
     },
     {
-      "description": "Do not delay dependency updates in Weave Labs repositories.",
-      "matchRepositories": ["weave-labs/**"],
+      "description": "Do not delay first-party Weave Labs dependency updates.",
+      "matchPackageNames": [
+        "@weave-labs/**",
+        "@weavelabs/**",
+        "weave-labs/**",
+        "github.com/weave-labs/**"
+      ],
       "minimumReleaseAge": "0 days"
     }
   ],
