@@ -61,14 +61,25 @@
   },
   "packageRules": [
     {
+      "description": "The Unstructured API image is mirrored through Artifact Registry, but upstream tags live on downloads.unstructured.io.",
+      "matchDatasources": [
+        "docker"
+      ],
+      "matchPackageNames": [
+        "us-central1-docker.pkg.dev/weavelabs-common/image/unstructured-io/unstructured-api"
+      ],
+      "overridePackageName": "downloads.unstructured.io/unstructured-io/unstructured-api"
+    },
+    {
       "description": "Docker Hub mirror images keep their Artifact Registry pull path while Renovate looks up tags from Docker Hub.",
       "matchDatasources": [
         "docker"
       ],
       "matchPackageNames": [
-        "us-central1-docker.pkg.dev/weavelabs-common/dockerhub/**"
+        "us-central1-docker.pkg.dev/weavelabs-common/dockerhub/**",
+        "us-central1-docker.pkg.dev/weavelabs-common/image/**"
       ],
-      "overridePackageName": "{{replace 'us-central1-docker\\.pkg\\.dev/weavelabs-common/dockerhub/' '' packageName}}"
+      "overridePackageName": "{{replace 'us-central1-docker\\.pkg\\.dev/weavelabs-common/(?:dockerhub|image)/' '' packageName}}"
     },
     {
       "automerge": true,
