@@ -82,6 +82,15 @@
       "overridePackageName": "{{replace 'us-central1-docker\\.pkg\\.dev/weavelabs-common/(?:dockerhub|image)/' '' packageName}}"
     },
     {
+      "description": "Run go mod tidy after Go module updates so go.mod and go.sum stay in sync.",
+      "matchManagers": [
+        "gomod"
+      ],
+      "postUpdateOptions": [
+        "gomodTidy"
+      ]
+    },
+    {
       "automerge": true,
       "groupName": "all non-major dependencies",
       "matchUpdateTypes": [
