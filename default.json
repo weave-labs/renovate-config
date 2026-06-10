@@ -3,10 +3,6 @@
   "allowedEnv": [
     "GOPRIVATE"
   ],
-  "allowedCommands": [
-    "^go mod tidy$",
-    "^\\./scripts/terraform-locks-update\\.sh$"
-  ],
   "autoApprove": true,
   "automergeStrategy": "squash",
   "env": {
@@ -90,22 +86,9 @@
       "matchManagers": [
         "gomod"
       ],
-      "postUpgradeTasks": {
-        "executionMode": "update",
-        "commands": [
-          "go mod tidy"
-        ],
-        "workingDirTemplate": "{{{packageFileDir}}}",
-        "installTools": {
-          "golang": {}
-        },
-        "fileFilters": [
-          "go.mod",
-          "go.sum",
-          "**/go.mod",
-          "**/go.sum"
-        ]
-      }
+      "postUpdateOptions": [
+        "gomodTidy"
+      ]
     },
     {
       "automerge": true,
