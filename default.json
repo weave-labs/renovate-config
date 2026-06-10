@@ -3,6 +3,10 @@
   "allowedEnv": [
     "GOPRIVATE"
   ],
+  "allowedCommands": [
+    "^go mod tidy$",
+    "^\\./scripts/terraform-locks-update\\.sh$"
+  ],
   "autoApprove": true,
   "automergeStrategy": "squash",
   "env": {
@@ -80,6 +84,28 @@
         "us-central1-docker.pkg.dev/weavelabs-common/image/**"
       ],
       "overridePackageName": "{{replace 'us-central1-docker\\.pkg\\.dev/weavelabs-common/(?:dockerhub|image)/' '' packageName}}"
+    },
+    {
+      "description": "Run go mod tidy after Go module updates so go.mod and go.sum stay in sync.",
+      "matchManagers": [
+        "gomod"
+      ],
+      "postUpgradeTasks": {
+        "executionMode": "update",
+        "commands": [
+          "go mod tidy"
+        ],
+        "workingDirTemplate": "{{{packageFileDir}}}",
+        "installTools": {
+          "golang": {}
+        },
+        "fileFilters": [
+          "go.mod",
+          "go.sum",
+          "**/go.mod",
+          "**/go.sum"
+        ]
+      }
     },
     {
       "automerge": true,
